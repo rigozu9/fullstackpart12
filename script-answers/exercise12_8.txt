@@ -1,0 +1,86 @@
+Script started on 2026-01-21 15:23:05+02:00 [TERM="xterm-256color" TTY="/dev/pts/2" COLUMNS="167" LINES="17"]
+[?2004h]0;rigozu@riku-pc: ~/3rd_year_school/fullstackpart12[01;32mrigozu@riku-pc[00m:[01;34m~/3rd_year_school/fullstackpart12[00m$ cd todo-app/todo-backend/
+[?2004l[?2004h]0;rigozu@riku-pc: ~/3rd_year_school/fullstackpart12/todo-app/todo-backend[01;32mrigozu@riku-pc[00m:[01;34m~/3rd_year_school/fullstackpart12/todo-app/todo-backend[00m$ dokce[K[K[Kcker compose ls
+[?2004lNAME                STATUS              CONFIG FILES
+todo-backend        running(1)          /home/rigozu/3rd_year_school/fullstackpart12/todo-app/todo-backend/docker-compose.dev.yml
+[?2004h]0;rigozu@riku-pc: ~/3rd_year_school/fullstackpart12/todo-app/todo-backend[01;32mrigozu@riku-pc[00m:[01;34m~/3rd_year_school/fullstackpart12/todo-app/todo-backend[00m$ compos[Kdocker compose volumes[K[Kcontainer ls
+[?2004lCONTAINER ID   IMAGE         COMMAND                  CREATED          STATUS             PORTS                                           NAMES
+87572889b5e2   nginx         "/docker-entrypoint.…"   6 minutes ago    Up 6 minutes       0.0.0.0:8080->80/tcp, [::]:8080->80/tcp         wonderful_boyd
+04a12c9a6c9f   mongo         "docker-entrypoint.s…"   14 minutes ago   Up 3 minutes       0.0.0.0:3456->27017/tcp, [::]:3456->27017/tcp   todo-backend-mongo-1
+a0c00372f544   postgres:18   "docker-entrypoint.s…"   2 weeks ago      Up About an hour   0.0.0.0:5432->5432/tcp, [::]:5432->5432/tcp     fs13-postgres
+[?2004h]0;rigozu@riku-pc: ~/3rd_year_school/fullstackpart12/todo-app/todo-backend[01;32mrigozu@riku-pc[00m:[01;34m~/3rd_year_school/fullstackpart12/todo-app/todo-backend[00m$ docker exec -it [7mtodo-backend-mongo-1[27mtodo-backend-mongo-1 bash
+[?2004l[?2004hroot@04a12c9a6c9f:/# [7mmongosh[27mmongosh [7m-u root -p example[27m-u root -p example
+[?2004l]0;mongosh mongodb://<credentials>@127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000Current Mongosh Log ID:	6970d3b239ddab6d858ce5af
+Connecting to:		[1m[32mmongodb://<credentials>@127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+2.6.0[0m
+Using MongoDB:		8.2.3
+[1m[33mUsing Mongosh[0m:		2.6.0
+
+For mongosh info see: https://www.mongodb.com/docs/mongodb-shell/
+
+
+To help improve our products, anonymous usage data is collected and sent to MongoDB periodically (https://www.mongodb.com/legal/privacy-policy).
+You can opt-out by running the disableTelemetry() command.
+
+[1G[0J [1G[?2004h[1m[33m------[0m
+   [1m[33mThe server generated these startup warnings when booting[0m
+   2026-01-21T13:20:54.247+00:00: Using the XFS filesystem is strongly recommended with the WiredTiger storage engine. See http://dochub.mongodb.org/core/prodnotes-filesystem
+   2026-01-21T13:20:54.776+00:00: Soft rlimits for open file descriptors too low
+   2026-01-21T13:20:54.776+00:00: For customers running the current memory allocator, we suggest changing the contents of the following sysfsFile
+   2026-01-21T13:20:54.776+00:00: For customers running the current memory allocator, we suggest changing the contents of the following sysfsFile
+   2026-01-21T13:20:54.776+00:00: We suggest setting the contents of sysfsFile to 0.
+   2026-01-21T13:20:54.776+00:00: We suggest setting swappiness to 0 or 1, as swapping can cause performance problems.
+[1m[33m------[0m
+
+[1G[0Jtest> [7Gshow dbs
+[1madmin[0m         100.00 KiB
+[1mconfig[0m         12.00 KiB
+[1mlocal[0m          68.00 KiB
+[1mthe_database[0m   56.00 KiB
+[1G[0Jtest> [7Guse the_database
+switched to db the_database
+[1G[0Jthe_database> [15Gshow collections
+[1mtodos[0m
+[1G[0Jthe_database> [15Gdb.todos.find({})
+[
+  {
+    _id: ObjectId([32m'6970cae069a4719ca98ce5b0'[39m),
+    text: [32m'koira ulos'[39m,
+    done: [33mfalse[39m
+  },
+  {
+    _id: ObjectId([32m'6970cae069a4719ca98ce5b1'[39m),
+    text: [32m'Learn about containers'[39m,
+    done: [33mfalse[39m
+  }
+]
+[1G[0Jthe_database> [15Gdb.todos.instert[1G[0Jthe_database> db.todos.inster[30G[1G[0Jthe_database> db.todos.inste[29G[1G[0Jthe_database> db.todos.inst[28G[1G[0Jthe_database> db.todos.ins[27GertOne({[1G[0Jthe_database> db.todos.insertOne([34G[1G[0Jthe_database> db.todos.insertOne[33G[1G[0Jthe_database> db.todos.[24G[1G[0Jthe_database> db.todos[23G[1G[0Jthe_database> db.[18G[1G[0Jthe_database> db[17G[1G[0Jthe_database> [15Gdb.todos.insertOne({ text[33mtext[39m: [32m"[39m[32mI[39m[32mn[39m[32mc[39m[32mr[39m[32me[39m[32ma[39m[32ms[39m[32me[39m [32mt[39m[32mh[39m[32me[39m [32mn[39m[32mu[39m[32mm[39m[32mb[39m[32me[39m[32mr[39m [32mo[39m[32mf[39m [32mt[39m[32mo[39m[32mo[39m[32ml[39m[32ms[39m [32mi[39m[32mn[39m [32mm[39m[32my[39m [32mt[39m[32mo[39m[32mo[39m[32ml[39m [32mb[39m[32me[39m[32ml[39m[32mt[39m[32m"[39m, d[36mdo[39mdone: fals[33mfalse[39m })
+[1G[0J... [5G
+{
+  acknowledged: [33mtrue[39m,
+  insertedId: ObjectId([32m'6970d44b39ddab6d858ce5b0'[39m)
+}
+[1G[0Jthe_database> [15G[1G[0Jthe_database> db.todos.insertOne({ [33mtext[39m: [32m"Increase the number of tools in my tool belt"[39m, [33mdone[39m: [33mfalse[39m })[104G[1G[0Jthe_database> db.todos.find({})[32G
+[
+  {
+    _id: ObjectId([32m'6970cae069a4719ca98ce5b0'[39m),
+    text: [32m'koira ulos'[39m,
+    done: [33mfalse[39m
+  },
+  {
+    _id: ObjectId([32m'6970cae069a4719ca98ce5b1'[39m),
+    text: [32m'Learn about containers'[39m,
+    done: [33mfalse[39m
+  },
+  {
+    _id: ObjectId([32m'6970d44b39ddab6d858ce5b0'[39m),
+    text: [32m'Increase the number of tools in my tool belt'[39m,
+    done: [33mfalse[39m
+  }
+]
+[1G[0Jthe_database> [15Gexit
+[?2004l]0;[?2004hroot@04a12c9a6c9f:/# exit
+[?2004lexit
+[?2004h]0;rigozu@riku-pc: ~/3rd_year_school/fullstackpart12/todo-app/todo-backend[01;32mrigozu@riku-pc[00m:[01;34m~/3rd_year_school/fullstackpart12/todo-app/todo-backend[00m$ exit
+[?2004lexit
+
+Script done on 2026-01-21 15:27:57+02:00 [COMMAND_EXIT_CODE="0"]

@@ -12,6 +12,8 @@ COPY . .
 
 RUN npm ci
 
+RUN npm test
+
 RUN npm run build
 
 # This is a new stage, everything before this is gone, except for the files that we want to COPY

@@ -1,0 +1,23 @@
+services:
+  frontend:
+    image: planner-frontend
+    build:
+      context: ./frontend # The context will pick this directory as the "build context"
+      dockerfile: Dockerfile # This will simply tell which dockerfile to read
+    container_name: planner-frontend # This will name the container planner-frontend
+  backend:
+    image: planner-backend
+    build:
+      context: ./backend # The context will pick this directory as the "build context"
+      dockerfile: Dockerfile # This will simply tell which dockerfile to read
+    container_name: planner-backend # This will name the container planner-backend
+  nginx:
+    image: nginx:1.20.1
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+    ports:
+      - 8080:80
+    container_name: reverse-proxy
+    depends_on:
+      - frontend # wait for the frontend container to be started
+      - backend # wait for the backend container to be started

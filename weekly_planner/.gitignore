@@ -1,0 +1,4 @@
+node_modules
+mongo
+mongo_data
+redis_data
